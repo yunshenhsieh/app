@@ -35,7 +35,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         
         currentBrightness = Double(UIScreen.main.brightness)
-        print("did become active")
+		
         /* 亮度提升到最亮
         UIScreen.main.brightness = 1.0
         */
@@ -49,7 +49,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         
         UIScreen.main.brightness = CGFloat(currentBrightness)
-        print("will resign active")
+		
     }
     
     func sceneWillEnterForeground(_ scene: UIScene) {
