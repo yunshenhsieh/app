@@ -47,8 +47,8 @@ public class MainActivity extends AppCompatActivity {
         String tmp = drugCode + "0019999999";
         BarcodeEncoder encoder = new BarcodeEncoder();
         try {
-            Bitmap bit = encoder.encodeBitmap(tmp, BarcodeFormat.QR_CODE,
-                    250, 250);
+            Bitmap bit = encoder.encodeBitmap(tmp, BarcodeFormat.CODE_128,
+                    1000, 250);
             ivCode.setImageBitmap(bit);
             codedisplay.setText(drugCode);
             etContent.setText("");
