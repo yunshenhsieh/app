@@ -36,30 +36,20 @@ class ViewController: UIViewController {
         let myName = nameText.text
                 if let name = myName{
                     let combinedString = "\(name)0019999999"
-                    qrImageView.image = generateQRCode(Name:combinedString)
+                    qrImageView.image = generateBarCode(Name:combinedString)
     }
     }
     
     
-//  QR code產生的程式碼
-    func generateQRCode(Name:String) -> UIImage? {
+//  Barcode產生的程式碼
+    func generateBarCode(Name:String) -> UIImage? {
         let name_data = Name.data(using: String.Encoding.ascii)
-        if let filter = CIFilter(name: "CIQRCodeGenerator"){
+        if let filter = CIFilter(name: "CICode128BarcodeGenerator"){
             filter.setValue(name_data, forKey: "inputMessage")
-            filter.setValue("H", forKey: "inputCorrectionLevel")
-            /* 第一種解法，無高清縮放 開始處*/
-//            let transform = CGAffineTransform(scaleX: 3, y: 3)
-//            if let output = filter.outputImage?.transformed(by: transform){
-//                displayCode.text = nameText.text
-//                nameText.text = ""
-//                return UIImage(ciImage: output)
-//            }
-            /* 第一種解法，無高清縮放 結束處*/
             
             if let output = filter.outputImage{
-                let scaleX = qrImageView.frame.size.width / output.extent.size.width
-                let scaleY = qrImageView.frame.size.width / output.extent.size.height
-                let transform = CGAffineTransform(scaleX: scaleX, y: scaleY)
+                
+                let transform = CGAffineTransform(scaleX: 3, y: 3)
                 let fini = output.transformed(by: transform)
                 
                 // 亮度提升到最高
