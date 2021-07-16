@@ -52,8 +52,7 @@ class ViewController: UIViewController {
                 let transform = CGAffineTransform(scaleX: 3, y: 3)
                 let fini = output.transformed(by: transform)
                 
-                // 亮度提升到最高
-                UIScreen.main.brightness = 1.0
+                
                 displayCode.text = nameText.text
                 nameText.text = ""
                 return UIImage(ciImage: fini)
